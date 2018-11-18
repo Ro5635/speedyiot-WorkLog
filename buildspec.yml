@@ -23,6 +23,7 @@ phases:
     commands:
     # Use AWS SAM to package the application using AWS CloudFormation
     - aws --version
+    - aws s3 sync .  s3://worklog.fyp.robertcurran.uk
 # artifacts:
 #   type: zip
 #   files:
