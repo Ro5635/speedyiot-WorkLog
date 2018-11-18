@@ -23,7 +23,7 @@ phases:
     commands:
     # Use AWS SAM to package the application using AWS CloudFormation
     - aws --version
-artifacts:
-  type: zip
-  files:
-  - template-export.yml
+# artifacts:
+#   type: zip
+#   files:
+#   - template-export.yml
