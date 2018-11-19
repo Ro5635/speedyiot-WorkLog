@@ -3,29 +3,16 @@ version: 0.2
 phases:
   install:
     commands:
-    # Install dependencies needed for running tests
-    # - npm --version
-    # - npm install
-
-    # Prevent files from having a timestamp before 1980
-    # - find ./node_modules -mtime +10950 -exec touch {} \;
-
-
     # Upgrade AWS CLI to the latest version
     - pip install --upgrade pip
     - pip install --upgrade awscli
     - ls
   pre_build:
     commands:
-    # Discover and run unit tests in the 'tests' directory
-    # - npm test
   build:
     commands:
-    # Use AWS SAM to package the application using AWS CloudFormation
     - aws --version
-    - aws s3 ls
+    # Copy across the contents of the git repo over to S3
     - aws s3 sync .  s3://worklog.fyp.robertcurran.uk
-# artifacts:
-#   type: zip
-#   files:
-#   - template-export.yml
+    # Clear the CloudFront Cache with an invalidation request
+    # to do
